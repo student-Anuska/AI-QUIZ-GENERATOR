@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Quiz Generator </title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+<div class="grid-bg"></div>
+<div class="wrap">
+  <div class="logo"><h1>AI Quiz Generator</h1><p>⚡ AI-Powered Quiz App </p></div>
+
+  <!-- SETUP -->
+  <div class="screen active" id="S0">
+    <div class="card">
+      <div class="sh">Configure Your Quiz</div>
+      <div class="ss">AI will generate unique questions tailored to your settings.</div>
+      <div class="sg">
+        <div class="fg full">
+          <span class="fl">Choose a Topic</span>
+          <div class="tg" id="topicsGrid"></div>
+          <input type="text" id="customTopic" placeholder="Or type any custom topic…">
+        </div>
+        <div class="fg">
+          <span class="fl">Difficulty</span>
+          <div class="dr">
+            <button class="db de" data-d="easy">🌱 Easy</button>
+            <button class="db" data-d="medium">⚡ Medium</button>
+            <button class="db" data-d="hard">🔥 Hard</button>
+          </div>
+        </div>
+        <div class="fg">
+          <span class="fl">Number of Questions</span>
+          <div class="sr">
+            <input type="range" id="qsl" min="3" max="50" value="2">
+            <span class="qv" id="qvl">10</span>
+          </div>
+        </div>
+      </div>
+      <button class="bg" id="genBtn" onclick="go()">⚡ &nbsp;Generate Quiz</button>
+    </div>
+  </div>
+
+  <!-- LOADING -->
+  <div class="screen" id="S1">
+    <div class="card">
+      <div class="spin"></div>
+      <div class="lm" id="lm">GENERATING QUESTIONS…</div>
+      <div class="ls">AI is crafting your quiz right now</div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="screen" id="S2">
+    <div class="card">
+      <div class="qtop">
+        <div><div class="qb" id="qbadge">Q 1 / 10</div><div class="qm" id="qmeta">topic • diff</div></div>
+        <div class="tp"><span>⏱</span><span id="timerDisplay">30</span></div>
+      </div>
+      <div class="pt"><div class="pf" id="pf" style="width:0%"></div></div>
+      <div class="qt" id="qnt">QUESTION 01</div>
+      <div class="qtx" id="qtx">Loading…</div>
+      <div class="og" id="og"></div>
+      <div class="fb" id="fb">
+        <span class="fbt" id="fbt"></span>
+        <button class="bn" onclick="nextQ()">NEXT →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="screen" id="S3">
+    <div class="card">
+      <div class="rh">
+        <div class="ring">
+          <svg viewBox="0 0 160 160"><circle class="rt" cx="80" cy="80" r="70"/><circle class="rf" id="rf" cx="80" cy="80" r="70"/></svg>
+          <div id="scorePct">—</div>
+        </div>
+        <div class="sl">final score</div>
+        <div class="rg" id="rg">—</div>
+        <div class="rm" id="rm">—</div>
+      </div>
+      <div class="strow">
+        <div class="stb"><div class="stn" style="color:var(--correct)" id="sc">0</div><div class="stl">Correct</div></div>
+        <div class="stb"><div class="stn" style="color:var(--wrong)" id="sw">0</div><div class="stl">Wrong</div></div>
+        <div class="stb"><div class="stn" style="color:var(--accent3)" id="st">0s</div><div class="stl">Avg Time</div></div>
+      </div>
+      <div class="rvh">📋Answer Review</div>
+      <div id="rl"></div>
+      <button class="ba" onclick="reset()">↩ &nbsp;Play Again</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
